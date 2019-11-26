@@ -1,0 +1,31 @@
+{
+  "name": "site-validator",
+  "version": "0.1.0",
+  "description": "check for broken links in sites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meathill/site-validator.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Meathill",
+    "email": "meathill@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meathill/site-validator/issues"
+  },
+  "homepage": "https://github.com/meathill/site-validator#readme",
+  "dependencies": {
+    "@hashicorp/broken-links-checker": "^1.2.3",
+    "axios": "^0.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "lodash": "^4.17.15",
+    "puppeteer": "^2.0.0",
+    "yargs": "^15.0.2"
+  }
+}
