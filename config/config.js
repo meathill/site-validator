@@ -3,8 +3,12 @@ module.exports = {
 
   "startUrl": "https://openresty.com.cn/cn/",
 
-  "domain": [
+  "domains": [
     "openresty.com.cn",
+  ],
+
+  exclusive: [
+
   ],
 
   "timeout": 60000,
