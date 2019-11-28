@@ -9,6 +9,6 @@ if (config) {
   config = require(resolve(process.cwd(), config));
 }
 
-config = assign(config, baseConfig);
+config = assign({}, baseConfig, config);
 
 module.exports = config;

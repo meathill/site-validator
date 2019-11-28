@@ -14,11 +14,15 @@ const {startUrl} = config;
 
 (async () => {
   console.log('[SV] start');
+  if (!startUrl) {
+    throw new Error('[SV] No start URL');
+  }
+
+  let browser;
   try {
-    const browser = await puppeteer.launch();
+    browser = await puppeteer.launch();
     const page = await browser.newPage();
     await traverse(page, startUrl);
-    await browser.close();
 
     const {total, broken} = reduce(checked, ({total, broken}, item, url) => {
       if (isNumber(item)) {
@@ -51,5 +55,6 @@ const {startUrl} = config;
   } catch (e) {
     console.error(e);
   }
+  await browser.close();
   console.log('[SV] over');
 })();

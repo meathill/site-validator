@@ -1,10 +1,10 @@
 module.exports = {
-  "verbose": true,
+  'verbose': true,
 
-  "startUrl": "https://openresty.com.cn/cn/",
+  'startUrl': '',
 
-  "domains": [
-    "openresty.com.cn",
+  'domains': [
+    'openresty.com.cn',
   ],
 
   exclusive: [
@@ -13,7 +13,7 @@ module.exports = {
 
   skipInvisible: false,
 
-  "timeout": 60000,
+  'timeout': 60000,
 
-  "interval": 1000,
+  'interval': 1000,
 };
