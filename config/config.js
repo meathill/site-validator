@@ -11,6 +11,8 @@ module.exports = {
 
   ],
 
+  skipInvisible: false,
+
   "timeout": 60000,
 
   "interval": 1000,

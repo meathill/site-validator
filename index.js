@@ -1,9 +1,10 @@
-#!/usr/bin/env /usr/local/node/bin/node --experimental-repl-await
+#!/usr/bin/env node --experimental-repl-await
 
 const puppeteer = require('puppeteer');
 const config = require('./config');
 const {
   isNumber,
+  isEmpty,
   reduce,
 } = require('lodash');
 const {checked, traverse} = require('./lib/traverse');
@@ -32,7 +33,7 @@ const {startUrl} = config;
         const {message} = item;
         broken[url] = message;
       }
-      return memo;
+      return {total, broken};
     },
       {
         total: {
@@ -44,7 +45,9 @@ const {startUrl} = config;
       },
     );
     console.table(total);
-    console.table(broken);
+    if (!isEmpty(broken)) {
+      console.table(broken);
+    }
   } catch (e) {
     console.error(e);
   }
