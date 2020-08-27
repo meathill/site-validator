@@ -10,12 +10,18 @@ const {
 const {checked, traverse} = require('./lib/traverse');
 
 
-const {startUrl} = config;
+const {startUrl, domains} = config;
 
 (async () => {
   console.log('[SV] start');
   if (!startUrl) {
     throw new Error('[SV] No start URL');
+  }
+  const url = new URL(startUrl);
+  if (domains) {
+    domains.push(url.hostname);
+  } else {
+    config.domains = [url.hostname];
   }
 
   let browser;

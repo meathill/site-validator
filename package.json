@@ -4,7 +4,8 @@
   "description": "check for broken links in sites",
   "main": "index.js",
   "scripts": {
-    "or": "node index.js --config=or.js"
+    "or": "node index.js --config=or.js",
+    "forum": "node index.js --config=forum.openresty.us.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,7 @@
   "homepage": "https://github.com/meathill/site-validator#readme",
   "dependencies": {
     "lodash": "^4.17.19",
-    "puppeteer": "^3.2.0",
+    "puppeteer": "^5.2.1",
     "yargs": "^15.3.1"
   },
   "devDependencies": {}
