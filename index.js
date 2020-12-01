@@ -7,7 +7,7 @@ const {
   isEmpty,
   reduce,
 } = require('lodash');
-const {checked, traverse} = require('./lib/traverse');
+const {checked, langNotMatch, traverse} = require('./lib/traverse');
 
 
 const {startUrl, domains} = config;
@@ -28,7 +28,7 @@ const {startUrl, domains} = config;
   try {
     browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await traverse(page, startUrl);
+    await traverse(page, startUrl, startUrl);
 
     const {total, broken} = reduce(checked, ({total, broken}, item, url) => {
       if (isNumber(item)) {
@@ -57,6 +57,11 @@ const {startUrl, domains} = config;
     console.table(total);
     if (!isEmpty(broken)) {
       console.table(broken);
+    }
+
+    if (langNotMatch && langNotMatch.length !== 0) {
+      console.log('\nLanguage not matched:');
+      console.table(langNotMatch);
     }
   } catch (e) {
     console.error(e);
