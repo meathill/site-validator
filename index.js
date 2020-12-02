@@ -7,7 +7,7 @@ const {
   isEmpty,
   reduce,
 } = require('lodash');
-const {checked, langNotMatch, traverse} = require('./lib/traverse');
+const {crawl} = require('./lib/traverse');
 
 
 const {startUrl, domains} = config;
@@ -28,7 +28,7 @@ const {startUrl, domains} = config;
   try {
     browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await traverse(page, startUrl, startUrl);
+    const {checked, langNotMatch} = await crawl(page, startUrl);
 
     const {total, broken} = reduce(checked, ({total, broken}, item, url) => {
       if (isNumber(item)) {
