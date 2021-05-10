@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/meathill/site-validator#readme",
   "dependencies": {
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "puppeteer": "^5.2.1",
     "yargs": "^15.3.1"
   },
