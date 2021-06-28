@@ -1,6 +1,14 @@
 #!/usr/bin/env node --experimental-repl-await
 
 const puppeteer = require('puppeteer');
+const axios = require('axios');
+const {
+  promises: {
+    writeFile,
+  },
+} = require('fs');
+const {resolve} = require('path');
+const querystring = require('querystring');
 const config = require('./config');
 const {
   isNumber,
@@ -57,6 +65,21 @@ const {startUrl, domains} = config;
     console.table(total);
     if (!isEmpty(broken)) {
       console.table(broken);
+    }
+    if (process.env.SERVER_CHAN_KEY) {
+      const key = process.env.SERVER_CHAN_KEY;
+      const data = querystring.stringify({
+        title: '[Site Validator] - OR',
+        desp: JSON.stringify(total),
+      });
+      await axios.post(`https://sctapi.ftqq.com/${key}.send`, data);
+      const date = new Date();
+      const log = resolve(__dirname, [
+        date.getFullYear(),
+        date.getMonth() + 1,
+        date.getDate(),
+      ].join('-') + '.log');
+      await writeFile(log, JSON.stringify(broken), 'utf8');
     }
 
     if (langNotMatch && langNotMatch.length !== 0) {
