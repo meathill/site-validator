@@ -1,6 +1,12 @@
 #!/usr/bin/env node --experimental-repl-await
 
-const puppeteer = require('puppeteer');
+require('dotenv').config();
+let puppeteer;
+if (process.env.BROWSER) {
+  puppeteer = require('puppeteer-core');
+} else {
+  puppeteer = require('puppeteer');
+}
 const axios = require('axios');
 const {
   promises: {
@@ -9,7 +15,6 @@ const {
 } = require('fs');
 const {resolve} = require('path');
 const querystring = require('querystring');
-require('dotenv').config();
 const config = require('./config');
 const {
   isNumber,
