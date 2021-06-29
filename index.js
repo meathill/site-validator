@@ -34,11 +34,18 @@ const {startUrl, domains} = config;
 
   let browser;
   try {
-    browser = await puppeteer.launch({
+    const options = {
       args: [
         '--no-sandbox',
+        '--disabled-setupid-sandbox',
+        '--disable-gpu',
+        '--disable-dev-shm-usage',
       ],
-    });
+    };
+    if (process.env.BROWSER) {
+      options.executablePath = process.env.BROWSER;
+    }
+    browser = await puppeteer.launch(options);
     const page = await browser.newPage();
     const {checked, langNotMatch} = await crawl(page, startUrl);
 
