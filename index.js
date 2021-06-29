@@ -9,6 +9,7 @@ const {
 } = require('fs');
 const {resolve} = require('path');
 const querystring = require('querystring');
+require('dotenv').config();
 const config = require('./config');
 const {
   isNumber,
