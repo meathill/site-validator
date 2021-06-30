@@ -1,6 +1,14 @@
-#!/usr/bin/env node --experimental-repl-await
+#!/usr/bin/env node
 
-require('dotenv').config();
+const {
+  promises: {
+    writeFile,
+  },
+} = require('fs');
+const {resolve} = require('path');
+require('dotenv').config({
+  path: resolve(__dirname, './.env'),
+});
 let puppeteer;
 if (process.env.BROWSER) {
   puppeteer = require('puppeteer-core');
@@ -8,12 +16,6 @@ if (process.env.BROWSER) {
   puppeteer = require('puppeteer');
 }
 const axios = require('axios');
-const {
-  promises: {
-    writeFile,
-  },
-} = require('fs');
-const {resolve} = require('path');
 const querystring = require('querystring');
 const config = require('./config');
 const {
