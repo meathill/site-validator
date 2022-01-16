@@ -16,7 +16,7 @@ if (process.env.BROWSER) {
   puppeteer = require('puppeteer');
 }
 const axios = require('axios');
-const querystring = require('querystring');
+const qs = require('qs');
 const config = require('./config');
 const {
   isNumber,
@@ -87,7 +87,7 @@ const {startUrl, domains} = config;
     }
     if (process.env.SERVER_CHAN_KEY) {
       const key = process.env.SERVER_CHAN_KEY;
-      const data = querystring.stringify({
+      const data = qs.stringify({
         title: '[Site Validator] - OR',
         desp: JSON.stringify(total),
       });
